@@ -1,4 +1,5 @@
-const fs = require('fs');
+// const fs = require('fs');
+const EventEmitter = require('events');
 // const path = require('path');
 // const os = require('os');
 // const fs = require('fs')
@@ -10,5 +11,12 @@ const fs = require('fs');
 // console.log(path.parse(myPath));
 // console.log(os.cpus());
 
-const file = fs.readFileSync('myfile.txt');
-console.log(file.toString());
+// fs.readFile('myfile.txt', (err, data) => {
+//     console.log(data.toString());
+// });
+
+const emitter = new EventEmitter();
+
+emitter.on('somedata', ({ fname, lname }) => {
+    console.log(`I am ${fname} ${lname}`);
+});
